@@ -7,6 +7,7 @@ abstract class Routes {
   static const SETTINGS = _Paths.SETTINGS;
   static const AI_CHAT = _Paths.AI_CHAT;
   static const MAIN_LAYOUT = _Paths.MAIN_LAYOUT;
+  static const DRINK_REMINDER = _Paths.DRINK_REMINDER;
 }
 
 abstract class _Paths {
@@ -15,4 +16,5 @@ abstract class _Paths {
   static const SETTINGS = '/settings';
   static const AI_CHAT = '/ai-chat';
   static const MAIN_LAYOUT = '/main-layout';
+  static const DRINK_REMINDER = '/drink-reminder';
 }

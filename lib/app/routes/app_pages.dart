@@ -2,6 +2,8 @@ import 'package:get/get.dart';
 
 import '../modules/ai_chat/bindings/ai_chat_binding.dart';
 import '../modules/ai_chat/views/ai_chat_view.dart';
+import '../modules/drink_reminder/bindings/drink_reminder_binding.dart';
+import '../modules/drink_reminder/views/drink_reminder_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/main_layout/bindings/main_layout_binding.dart';
@@ -35,6 +37,11 @@ class AppPages {
       name: _Paths.MAIN_LAYOUT,
       page: () => const MainLayoutView(),
       binding: MainLayoutBinding(),
+    ),
+    GetPage(
+      name: _Paths.DRINK_REMINDER,
+      page: () => const DrinkReminderView(),
+      binding: DrinkReminderBinding(),
     ),
   ];
 }
