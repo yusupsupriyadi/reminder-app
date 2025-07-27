@@ -23,15 +23,6 @@ class HomeView extends GetView<HomeController> {
         backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
         elevation: 0,
         surfaceTintColor: Colors.transparent,
-        actions: [
-          IconButton(
-            icon: Icon(
-              Icons.settings,
-              color: Theme.of(context).colorScheme.onSurface,
-            ),
-            onPressed: () => Get.toNamed('/settings'),
-          ),
-        ],
       ),
       body: Container(
         color: Theme.of(context).scaffoldBackgroundColor,
