@@ -21,7 +21,10 @@
       "mcp__github__create_repository",
       "Bash(git remote add:*)",
       "Bash(git branch:*)",
-      "Bash(git push:*)"
+      "Bash(git push:*)",
+      "WebFetch(domain:github.com)",
+      "Bash(git commit:*)",
+      "Bash(git reset:*)"
     ],
     "deny": []
   }
