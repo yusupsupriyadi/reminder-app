@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:my_app/app/routes/app_pages.dart';
 
 class HomeController extends GetxController {
   // Reminder menu items
@@ -31,11 +32,18 @@ class HomeController extends GetxController {
 
   void onMenuTapped(int index) {
     final menu = reminderMenus[index];
-    Get.snackbar(
-      menu['title'] as String,
-      'Fitur ${menu['title']} akan segera hadir!',
-      snackPosition: SnackPosition.BOTTOM,
-      duration: const Duration(seconds: 2),
-    );
+
+    if (index == 0) {
+      // Navigate to Drink Reminder page using Get.to() so user can go back
+      Get.toNamed(Routes.DRINK_REMINDER);
+    } else {
+      // Show "coming soon" snackbar for other features
+      Get.snackbar(
+        menu['title'] as String,
+        'Fitur ${menu['title']} akan segera hadir!',
+        snackPosition: SnackPosition.BOTTOM,
+        duration: const Duration(seconds: 2),
+      );
+    }
   }
 }
