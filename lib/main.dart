@@ -26,16 +26,12 @@ ThemeData _lightTheme() {
   const softBlack = Color(0xFF1A1A1A);
   const offWhite = Color(0xFFFAFAFA);
   const lightGrey = Color(0xFFE0E0E0);
-  
+
   return ThemeData(
     brightness: Brightness.light,
     primaryColor: softBlack,
     scaffoldBackgroundColor: offWhite,
-    appBarTheme: const AppBarTheme(
-      backgroundColor: offWhite,
-      foregroundColor: softBlack,
-      elevation: 0,
-    ),
+    appBarTheme: const AppBarTheme(backgroundColor: offWhite, foregroundColor: softBlack, elevation: 0),
     colorScheme: const ColorScheme.light(
       primary: softBlack,
       secondary: softBlack,
@@ -72,16 +68,12 @@ ThemeData _darkTheme() {
   const lightGrey = Color(0xFFE8E8E8);
   const mediumGrey = Color(0xFF1E1E1E);
   const darkGreyLight = Color(0xFF2C2C2C);
-  
+
   return ThemeData(
     brightness: Brightness.dark,
     primaryColor: lightGrey,
     scaffoldBackgroundColor: darkGrey,
-    appBarTheme: const AppBarTheme(
-      backgroundColor: darkGrey,
-      foregroundColor: lightGrey,
-      elevation: 0,
-    ),
+    appBarTheme: const AppBarTheme(backgroundColor: darkGrey, foregroundColor: lightGrey, elevation: 0),
     colorScheme: const ColorScheme.dark(
       primary: lightGrey,
       secondary: lightGrey,
