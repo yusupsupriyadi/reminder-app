@@ -1,0 +1,315 @@
+{
+  "GetX Controller Template": {
+    "prefix": "getxcontroller",
+    "description": "GetX Controller with reactive variables and lifecycle methods",
+    "body": [
+      "import 'package:get/get.dart';",
+      "",
+      "class ${1:${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}}Controller extends GetxController {",
+      "  // Reactive variables",
+      "  var ${2:isLoading} = false.obs;",
+      "  var ${3:data} = <String>[].obs;",
+      "  ",
+      "  // Getters",
+      "  ${4:String get statusText => isLoading.value ? 'Loading...' : 'Ready';}",
+      "  ",
+      "  // Methods",
+      "  void ${5:fetchData}() async {",
+      "    ${2:isLoading}.value = true;",
+      "    try {",
+      "      // TODO: Implement your logic here",
+      "      await Future.delayed(Duration(seconds: 1));",
+      "      ${6:// Add your data fetching logic}",
+      "    } catch (e) {",
+      "      Get.snackbar('Error', e.toString());",
+      "    } finally {",
+      "      ${2:isLoading}.value = false;",
+      "    }",
+      "  }",
+      "  ",
+      "  @override",
+      "  void onInit() {",
+      "    super.onInit();",
+      "    ${7:// Initialize controller}",
+      "  }",
+      "  ",
+      "  @override",
+      "  void onReady() {",
+      "    super.onReady();",
+      "    ${8:// Called after widget is ready}",
+      "  }",
+      "  ",
+      "  @override",
+      "  void onClose() {",
+      "    ${9:// Cleanup resources}",
+      "    super.onClose();",
+      "  }",
+      "}"
+    ]
+  },
+  
+  "GetX View Template": {
+    "prefix": "getxview", 
+    "description": "GetX View with Obx reactive widgets",
+    "body": [
+      "import 'package:flutter/material.dart';",
+      "import 'package:get/get.dart';",
+      "import '../controllers/${TM_FILENAME_BASE/(.*)_view/${1:/downcase}/}_controller.dart';",
+      "",
+      "class ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/} extends GetView<${TM_FILENAME_BASE/(.*)_view/${1:/pascalcase}/}Controller> {",
+      "  const ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}({Key? key}) : super(key: key);",
+      "",
+      "  @override", 
+      "  Widget build(BuildContext context) {",
+      "    return Scaffold(",
+      "      appBar: AppBar(",
+      "        title: Text('${1:${TM_FILENAME_BASE/(.*)_view/${1:/capitalize}/}}'),",
+      "        centerTitle: true,",
+      "      ),",
+      "      body: ${2:Column}(",
+      "        ${3:mainAxisAlignment: MainAxisAlignment.center,}",
+      "        children: [",
+      "          // Reactive UI dengan Obx",
+      "          Obx(() => ${4:Text(",
+      "            controller.${5:statusText},",
+      "            style: Get.textTheme.headlineSmall,",
+      "          )}),",
+      "          ",
+      "          ${6:const SizedBox(height: 20),}",
+      "          ",
+      "          // Loading indicator",
+      "          Obx(() => controller.${7:isLoading}.value",
+      "            ? const CircularProgressIndicator()",
+      "            : const SizedBox()),",
+      "          ",
+      "          ${8:const SizedBox(height: 20),}",
+      "          ",
+      "          // Action button",
+      "          ElevatedButton(",
+      "            onPressed: controller.${9:fetchData},",
+      "            child: Text('${10:Fetch Data}'),",
+      "          ),",
+      "        ],",
+      "      ),",
+      "    );",
+      "  }",
+      "}"
+    ]
+  },
+
+  "GetX Binding Template": {
+    "prefix": "getxbinding",
+    "description": "GetX Binding for dependency injection", 
+    "body": [
+      "import 'package:get/get.dart';",
+      "import '../controllers/${TM_FILENAME_BASE/(.*)_binding/${1:/downcase}/}_controller.dart';",
+      "",
+      "class ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/} extends Bindings {",
+      "  @override",
+      "  void dependencies() {",
+      "    Get.lazyPut<${TM_FILENAME_BASE/(.*)_binding/${1:/pascalcase}/}Controller>(",
+      "      () => ${TM_FILENAME_BASE/(.*)_binding/${1:/pascalcase}/}Controller(),",
+      "    );",
+      "    ${1:// Add more dependencies here}",
+      "  }",
+      "}"
+    ]
+  },
+
+  "Obx Widget": {
+    "prefix": "obx",
+    "description": "Obx reactive widget wrapper",
+    "body": [
+      "Obx(() => ${1:Text(",
+      "  controller.${2:data}.value.toString(),",
+      "  style: ${3:Get.textTheme.bodyLarge},",
+      ")})"
+    ]
+  },
+
+  "GetBuilder Widget": {
+    "prefix": "getbuilder", 
+    "description": "GetBuilder widget for complex state management",
+    "body": [
+      "GetBuilder<${1:Controller}>(",
+      "  builder: (controller) => ${2:Container}(",
+      "    ${3:child: Text(controller.${4:data}),}",
+      "  ),",
+      ")"
+    ]
+  },
+
+  "GetX Navigation": {
+    "prefix": "getnavigation",
+    "description": "GetX navigation methods",
+    "body": [
+      "// Navigate to page",
+      "Get.to(() => ${1:NextPage}());",
+      "",
+      "// Navigate with named route", 
+      "Get.toNamed('${2:/route}');",
+      "",
+      "// Navigate with arguments",
+      "Get.toNamed('${3:/route}', arguments: ${4:{'key': 'value'}});",
+      "",
+      "// Replace current page",
+      "Get.off(() => ${5:ReplacePage}());",
+      "",
+      "// Clear stack and navigate",
+      "Get.offAll(() => ${6:HomePage}());",
+      "",
+      "// Go back",
+      "Get.back();",
+      "",
+      "// Go back with result", 
+      "Get.back(result: ${7:'result'});"
+    ]
+  },
+
+  "GetX Dialog": {
+    "prefix": "getxdialog",
+    "description": "GetX dialog implementation",
+    "body": [
+      "Get.dialog(",
+      "  AlertDialog(",
+      "    title: Text('${1:Dialog Title}'),",
+      "    content: Text('${2:Dialog content goes here}'),", 
+      "    actions: [",
+      "      TextButton(",
+      "        onPressed: () => Get.back(),",
+      "        child: Text('${3:Cancel}'),",
+      "      ),",
+      "      ElevatedButton(",
+      "        onPressed: () {",
+      "          ${4:// Add your action here}",
+      "          Get.back();",
+      "        },",
+      "        child: Text('${5:OK}'),",
+      "      ),",
+      "    ],",
+      "  ),",
+      ");"
+    ]
+  },
+
+  "GetX Snackbar": {
+    "prefix": "getxsnackbar",
+    "description": "GetX snackbar notification",
+    "body": [
+      "Get.snackbar(",
+      "  '${1:Title}',",
+      "  '${2:Message}',",
+      "  snackPosition: SnackPosition.${3|TOP,BOTTOM|},",
+      "  backgroundColor: ${4:Colors.blue},",
+      "  colorText: ${5:Colors.white},",
+      "  duration: Duration(seconds: ${6:3}),",
+      "  margin: EdgeInsets.all(${7:10}),",
+      "  borderRadius: ${8:10},",
+      ");"
+    ]
+  },
+
+  "GetX Bottom Sheet": {
+    "prefix": "getxbottomsheet", 
+    "description": "GetX bottom sheet implementation",
+    "body": [
+      "Get.bottomSheet(",
+      "  Container(",
+      "    height: ${1:200},",
+      "    decoration: BoxDecoration(",
+      "      color: ${2:Colors.white},",
+      "      borderRadius: BorderRadius.only(",
+      "        topLeft: Radius.circular(${3:20}),",
+      "        topRight: Radius.circular(${3:20}),",
+      "      ),",
+      "    ),",
+      "    child: Column(",
+      "      children: [",
+      "        Container(",
+      "          height: 4,",
+      "          width: 40,", 
+      "          margin: EdgeInsets.symmetric(vertical: 10),",
+      "          decoration: BoxDecoration(",
+      "            color: Colors.grey[300],",
+      "            borderRadius: BorderRadius.circular(2),",
+      "          ),",
+      "        ),",
+      "        ${4:ListTile(",
+      "          leading: Icon(Icons.${5:share}),",
+      "          title: Text('${6:Share}'),",
+      "          onTap: () {",
+      "            ${7:// Add your action}",
+      "            Get.back();",
+      "          },",
+      "        ),}",
+      "      ],",
+      "    ),",
+      "  ),",
+      ");"
+    ]
+  },
+
+  "GetX Dependency Injection": {
+    "prefix": "getxdi",
+    "description": "GetX dependency injection patterns",
+    "body": [
+      "// Immediate instance",
+      "Get.put(${1:Service}());",
+      "",
+      "// Lazy instance", 
+      "Get.lazyPut(() => ${2:Service}());",
+      "",
+      "// Async instance",
+      "Get.putAsync(() async => await ${3:Service}.init());",
+      "",
+      "// Get instance",
+      "final ${4:service} = Get.find<${5:Service}>();",
+      "",
+      "// Put with tag",
+      "Get.put(${6:Service}(), tag: '${7:tag}');",
+      "",
+      "// Find with tag", 
+      "final ${8:service} = Get.find<${9:Service}>(tag: '${10:tag}');"
+    ]
+  },
+
+  "GetX Workers": {
+    "prefix": "getxworkers",
+    "description": "GetX reactive workers implementation", 
+    "body": [
+      "// In controller onInit()",
+      "@override",
+      "void onInit() {",
+      "  // React to changes",
+      "  ever(${1:counter}, (value) => print('Counter changed: \\$value'));",
+      "  ",
+      "  // Debounce for search",
+      "  debounce(${2:searchText}, (value) => ${3:performSearch}(value),",
+      "    time: Duration(milliseconds: ${4:500}));",
+      "  ",
+      "  // Execute once when condition is met", 
+      "  once(${5:isLoggedIn}, (value) => ${6:fetchUserData}());",
+      "  ",
+      "  // Interval execution",
+      "  interval(${7:timer}, (value) => ${8:updateTimer}(),",
+      "    time: Duration(seconds: ${9:1}));",
+      "  ",
+      "  super.onInit();",
+      "}"
+    ]
+  },
+
+  "GetX Route Configuration": {
+    "prefix": "getxroute",
+    "description": "GetX route configuration",
+    "body": [
+      "GetPage(",
+      "  name: '${1:/route-name}',",
+      "  page: () => ${2:PageView}(),",
+      "  binding: ${3:PageBinding}(),",
+      "  transition: Transition.${4|fadeIn,rightToLeft,leftToRight,topToBottom,bottomToTop,rightToLeftWithFade,leftToRightWithFade|},",
+      "  transitionDuration: Duration(milliseconds: ${5:300}),",
+      ")"
+    ]
+  }
+}

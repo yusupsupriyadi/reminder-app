@@ -1,0 +1,138 @@
+{
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "explicit",
+    "source.organizeImports": "explicit"
+  },
+  "editor.formatOnSave": true,
+  "editor.formatOnType": true,
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "editor.detectIndentation": false,
+  "dart.flutterSdkPath": null,
+  "dart.debugExternalPackageLibraries": false,
+  "dart.debugSdkLibraries": false,
+  "dart.previewFlutterUiGuides": true,
+  "dart.previewFlutterUiGuidesCustomTracking": true,
+  "dart.closingLabels": true,
+  "dart.lineLength": 120,
+  "dart.showTodos": true,
+  "dart.allowAnalytics": false,
+  "dart.warnWhenEditingFilesOutsideWorkspace": true,
+  "dart.renameFilesWithClasses": "prompt",
+  "dart.updateImportsOnRename": true,
+  "dart.hotReloadOnSave": "always",
+  "dart.flutterHotReloadOnSave": "always",
+  "dart.enableSdkFormatter": true,
+  "dart.insertArgumentPlaceholders": false,
+  "dart.showSkippedTests": true,
+  "dart.runPubGetOnPubspecChanges": true,
+  "dart.openDevTools": "flutter",
+  "[dart]": {
+    "editor.formatOnSave": true,
+    "editor.formatOnType": true,
+    "editor.rulers": [120],
+    "editor.selectionHighlight": false,
+    "editor.suggest.snippetsPreventQuickSuggestions": false,
+    "editor.suggestSelection": "first",
+    "editor.tabCompletion": "onlySnippets",
+    "editor.wordBasedSuggestions": "off",
+    "editor.defaultFormatter": "Dart-Code.dart-code"
+  },
+  "files.associations": {
+    "*.dart": "dart",
+    "pubspec.yaml": "yaml",
+    "analysis_options.yaml": "yaml"
+  },
+  "emmet.includeLanguages": {
+    "dart": "html"
+  },
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/build/": true,
+    "**/.flutter-plugins": true,
+    "**/.flutter-plugins-dependencies": true,
+    "**/generated_plugin_registrant.dart": true,
+    "**/*.g.dart": true,
+    "**/*.freezed.dart": true,
+    "**/*.mocks.dart": true
+  },
+  "search.exclude": {
+    "**/build": true,
+    "**/.flutter-plugins": true,
+    "**/.flutter-plugins-dependencies": true,
+    "**/generated_plugin_registrant.dart": true,
+    "**/*.g.dart": true,
+    "**/*.freezed.dart": true,
+    "**/*.mocks.dart": true
+  },
+  "todo-tree.general.tags": [
+    "TODO",
+    "FIXME",
+    "BUG",
+    "HACK",
+    "NOTE",
+    "INFO",
+    "GetX"
+  ],
+  "todo-tree.highlights.customHighlight": {
+    "GetX": {
+      "icon": "star",
+      "type": "tag",
+      "foreground": "#ff6b35",
+      "background": "#ffe4dc"
+    }
+  },
+  "better-comments.tags": [
+    {
+      "tag": "!",
+      "color": "#FF2D00",
+      "strikethrough": false,
+      "underline": false,
+      "backgroundColor": "transparent",
+      "bold": false,
+      "italic": false
+    },
+    {
+      "tag": "?",
+      "color": "#3498DB",
+      "strikethrough": false,
+      "underline": false,
+      "backgroundColor": "transparent",
+      "bold": false,
+      "italic": false
+    },
+    {
+      "tag": "//",
+      "color": "#474747",
+      "strikethrough": true,
+      "underline": false,
+      "backgroundColor": "transparent",
+      "bold": false,
+      "italic": false
+    },
+    {
+      "tag": "GetX",
+      "color": "#FF6B35",
+      "strikethrough": false,
+      "underline": false,
+      "backgroundColor": "transparent",
+      "bold": true,
+      "italic": false
+    }
+  ],
+  "cSpell.words": [
+    "GetX",
+    "GetMaterialApp", 
+    "GetView",
+    "GetBuilder",
+    "GetxController",
+    "Bindings",
+    "obx",
+    "getx",
+    "pubspec"
+  ]
+}
