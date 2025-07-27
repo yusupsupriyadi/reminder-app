@@ -29,18 +29,17 @@ class HomeView extends GetView<HomeController> {
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Obx(
-            () => GridView.builder(
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                crossAxisSpacing: 16,
-                mainAxisSpacing: 16,
-                childAspectRatio: 1.5,
-              ),
-              itemCount: controller.reminderMenus.length,
-              itemBuilder: (context, index) {
-                final menu = controller.reminderMenus[index];
-                return _buildMenuCard(context, menu, index);
-              },
+            () => Wrap(
+              spacing: 16,
+              runSpacing: 16,
+              children: controller.reminderMenus.asMap().entries.map((entry) {
+                final index = entry.key;
+                final menu = entry.value;
+                return SizedBox(
+                  width: (MediaQuery.of(context).size.width - 48) / 2, // 48 = padding (16*2) + spacing (16)
+                  child: _buildMenuCard(context, menu, index),
+                );
+              }).toList(),
             ),
           ),
         ),
@@ -66,6 +65,7 @@ class HomeView extends GetView<HomeController> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
             children: [
               Icon(
                 _getIcon(menu['icon'] as String),
